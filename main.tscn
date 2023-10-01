@@ -47,6 +47,7 @@ script = ExtResource("1_4683o")
 
 [node name="Aoverworld" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_giw7g")
+autoplay = true
 
 [node name="Adungeon" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_m5cfp")

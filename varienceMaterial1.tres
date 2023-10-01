@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dctkmninw2vcl"]
+
+[ext_resource type="Shader" path="res://varience.gdshader" id="1_diigr"]
+[ext_resource type="Texture2D" uid="uid://c3724oxh1xe4o" path="res://varience1.tres" id="2_utsae"]
+
+[resource]
+shader = ExtResource("1_diigr")
+shader_parameter/thresh = 0.0
+shader_parameter/marble = ExtResource("2_utsae")

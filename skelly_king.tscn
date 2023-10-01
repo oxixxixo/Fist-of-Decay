@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://0k3sh1vnrfn2"]
+
+[ext_resource type="Script" path="res://skelly_king.gd" id="1_fcptx"]
+[ext_resource type="Texture2D" uid="uid://mhgfmfmb43cu" path="res://assets/Skelly-0001.png" id="2_68vio"]
+[ext_resource type="Texture2D" uid="uid://q2ryo0vthmum" path="res://assets/Skelly-0002.png" id="3_u6rwm"]
+[ext_resource type="Texture2D" uid="uid://dkn323orrf3jw" path="res://assets/crown.png" id="4_fuuo4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsr46"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_68vio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u6rwm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5808"]
+size = Vector2(14, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beg1v"]
+size = Vector2(16, 11)
+
+[node name="skellyKing" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_fcptx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bsr46")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d5808")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_beg1v")
+
+[node name="Crown" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("4_fuuo4")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="area_shape_entered" from="hitbox" to="." method="_on_hitbox_area_shape_entered" flags=18]

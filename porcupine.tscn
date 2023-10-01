@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dygrm23k3677u"]
+
+[ext_resource type="Script" path="res://porcupine.gd" id="1_ffiw6"]
+[ext_resource type="Texture2D" uid="uid://ku72wv50qyj" path="res://assets/porcurtle.png" id="2_icqrg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_263rg"]
+atlas = ExtResource("2_icqrg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojlbp"]
+atlas = ExtResource("2_icqrg")
+region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qe01x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_263rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojlbp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5808"]
+size = Vector2(14, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beg1v"]
+size = Vector2(16, 11)
+
+[node name="porcupine" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_ffiw6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qe01x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_d5808")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_beg1v")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="area_shape_entered" from="hitbox" to="." method="_on_hitbox_area_shape_entered" flags=18]

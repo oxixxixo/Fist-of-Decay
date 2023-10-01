@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://04r00e20kg0y"]
+
+[ext_resource type="Shader" path="res://granite.gdshader" id="1_iyggo"]
+
+[sub_resource type="Gradient" id="Gradient_7di7c"]
+offsets = PackedFloat32Array(0.138211, 0.471545, 0.520325, 0.739837)
+colors = PackedColorArray(0, 0, 0, 1, 0.382114, 0.382114, 0.382114, 1, 0.68197, 0.68197, 0.68197, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g05au"]
+frequency = 0.2916
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rg4jx"]
+width = 64
+height = 64
+color_ramp = SubResource("Gradient_7di7c")
+noise = SubResource("FastNoiseLite_g05au")
+
+[resource]
+shader = ExtResource("1_iyggo")
+shader_parameter/marble = SubResource("NoiseTexture2D_rg4jx")

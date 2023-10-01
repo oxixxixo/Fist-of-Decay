@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkmvpd1eslfwp"]
+
+[ext_resource type="Texture2D" uid="uid://blsruo0pwql14" path="res://assets/tiles.png" id="1_8owmg"]
+[ext_resource type="Script" path="res://lock.gd" id="1_q3228"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1au8"]
+size = Vector2(10, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnf71"]
+atlas = ExtResource("1_8owmg")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7km1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnf71")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1hvc"]
+size = Vector2(14, 14)
+
+[node name="lock" type="StaticBody2D"]
+collision_layer = 8
+script = ExtResource("1_q3228")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s1au8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e7km1")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_c1hvc")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

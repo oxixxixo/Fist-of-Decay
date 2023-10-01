@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cggtfcfmrtmn1"]
+
+[ext_resource type="Script" path="res://assets/end.gd" id="1_2c4qf"]
+[ext_resource type="PackedScene" uid="uid://764rdpw057gd" path="res://orb.tscn" id="1_ilf4k"]
+
+[node name="Control" type="Node2D"]
+script = ExtResource("1_2c4qf")
+
+[node name="TextEdit" type="Label" parent="."]
+offset_left = -157.0
+offset_top = -82.0
+offset_right = 181.0
+offset_bottom = 91.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+text = "Congradulations, you win!
+or oh no! you died :(
+
+press space to restart"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ORB" parent="." instance=ExtResource("1_ilf4k")]
+position = Vector2(124, -17)
+
+[node name="ORB2" parent="." instance=ExtResource("1_ilf4k")]
+position = Vector2(-118, 25)
+
+[node name="ORB3" parent="." instance=ExtResource("1_ilf4k")]
+position = Vector2(60, 25)
+
+[node name="ORB4" parent="." instance=ExtResource("1_ilf4k")]
+position = Vector2(126, 52)
+
+[node name="ORB5" parent="." instance=ExtResource("1_ilf4k")]
+position = Vector2(-69, 4)
+
+[node name="ORB6" parent="." instance=ExtResource("1_ilf4k")]
+position = Vector2(-31, 34)

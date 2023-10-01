@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4m4p1fut0d47"]
+
+[ext_resource type="PackedScene" uid="uid://dycarnhu6notm" path="res://enemies/skelly_enemy.tscn" id="1_123tj"]
+[ext_resource type="PackedScene" uid="uid://dkmvpd1eslfwp" path="res://lock.tscn" id="2_24nex"]
+[ext_resource type="PackedScene" uid="uid://c53yk3rf401p1" path="res://player.tscn" id="3_nulxl"]
+[ext_resource type="PackedScene" uid="uid://dygrm23k3677u" path="res://porcupine.tscn" id="4_0jive"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rymmi"]
+size = Vector2(100, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="skelly" parent="." instance=ExtResource("1_123tj")]
+position = Vector2(96, 61)
+
+[node name="skelly2" parent="." instance=ExtResource("1_123tj")]
+position = Vector2(123, 61)
+
+[node name="lock" parent="." instance=ExtResource("2_24nex")]
+position = Vector2(73, 38)
+
+[node name="lock2" parent="." instance=ExtResource("2_24nex")]
+position = Vector2(106, 39)
+
+[node name="lock3" parent="." instance=ExtResource("2_24nex")]
+position = Vector2(135, 39)
+
+[node name="lock4" parent="." instance=ExtResource("2_24nex")]
+position = Vector2(192, 23)
+
+[node name="lock5" parent="." instance=ExtResource("2_24nex")]
+position = Vector2(68, 62)
+
+[node name="lock6" parent="." instance=ExtResource("2_24nex")]
+position = Vector2(220, 24)
+
+[node name="lock7" parent="." instance=ExtResource("2_24nex")]
+position = Vector2(157, 19)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_nulxl")]
+position = Vector2(114, 121)
+
+[node name="porcupine" parent="." instance=ExtResource("4_0jive")]
+position = Vector2(152, 76)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(117, 38)
+shape = SubResource("RectangleShape2D_rymmi")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(56, 21)
+shape = SubResource("RectangleShape2D_rymmi")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(29, 59)
+shape = SubResource("RectangleShape2D_rymmi")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://764rdpw057gd"]
+
+[ext_resource type="Script" path="res://ORB.gd" id="1_cv74q"]
+[ext_resource type="Texture2D" uid="uid://bwibodura1ijw" path="res://assets/items2.png" id="2_il445"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ilrkg"]
+radius = 4.0
+height = 8.0
+
+[node name="ORB" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_cv74q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ilrkg")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_il445")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
